@@ -27,9 +27,9 @@ test('check output', async () => {
 
   await p.send({
     to: 'test@test.com',
-    cc: undefined,
-    bcc: undefined,
-    text: undefined,
+    cc: '',
+    bcc: '',
+    text: '',
     subject: 'testing it out',
     html: '<h1>I am a test email \n with multi lines\n and emojis 🙋‍♂️ </h1>',
   })

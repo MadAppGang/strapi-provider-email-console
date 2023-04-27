@@ -6,7 +6,7 @@
       "moduleResolution":"node",
       "esModuleInterop": true, 
     },    
-    "include": ["src", "tests/index.test.ts"],
+    "include": ["src"],
     "exclude": ["node_modules", "**/__tests__/**"]
   }
   
