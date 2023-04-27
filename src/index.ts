@@ -18,29 +18,35 @@ interface SendOptions {
 }
 
 interface ProviderOptions {
-  filename?: string;
+  logger?: any
 }
 
 export default {
+  provider: 'srtapi-provider-email-console-colour',
+  name: 'srtapi-provider-email-console-colour',
+
   init(providerOptions: ProviderOptions, settings: Settings) {
     return {
       send : async function(options: SendOptions) {
         return new Promise<void>((resolve) => {
           const { from, to, cc, bcc, replyTo, subject, text, html } = options;
-          console.log(chalk.green('==================   Sending(pretending 😉) email...'));
-          console.log(chalk.bgYellow('from:'), chalk.blue(from || settings.defaultFrom));
-          console.log(chalk.bgYellow('to:'), chalk.blue(to));
-          console.log(chalk.bgYellow('cc:'), chalk.blue(cc));
-          console.log(chalk.bgYellow('bcc:'), chalk.blue(bcc));
-          console.log(chalk.bgYellow('replyTo:'), chalk.blue(replyTo || settings.defaultReplyTo));
-          console.log(chalk.bgGreen('subject:'), chalk.green(subject));
-          console.log(chalk.bgGreen('text:'), chalk.green(text));
-          console.log(chalk.bgGreen('html body: ======= '));
-          console.log(chalk.greenBright(html));
-          console.log(chalk.green('=================='));
+          const l = providerOptions.logger ?? console.log
+          l(chalk.green('==================   Sending(pretending 😉) email...'));
+          l(`${chalk.bgYellow('from:')} ${chalk.blue(from || settings.defaultFrom)}`);
+          l(`${chalk.bgYellow('to:')} ${chalk.blue(to)}`);
+          if (cc) l(`${chalk.bgYellow('cc:')} ${chalk.blue(cc)}`);          
+          if (bcc) l(`${chalk.bgYellow('bcc:')} ${chalk.blue(bcc)}`);
+          l(`${chalk.bgYellow('replyTo:')} ${chalk.blue(replyTo || settings.defaultReplyTo)}`);
+          l(`${chalk.bgGreen('subject:')} ${chalk.green(subject)}`);
+          if (text) l(`${chalk.bgGreen('text:')} ${chalk.green(text)}`);
+          l(`${chalk.bgGreen('html body: ======= ')}`);
+          l(chalk.greenBright(html));
+          l(chalk.bgGreen('==================='));
           resolve();
         });
       },
     };
   },  
 };
+
+
