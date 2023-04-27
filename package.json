@@ -6,12 +6,13 @@
     "strapi",
     "test"
   ],
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Strapi email provider to print emails to console",
   "repository": "git@github.com:MadAppGang/strapi-provider-email-console.git",
   "author": "Jack Rudenko <i@madappgang.com>",
   "license": "MIT",
   "private": false,
+  "type": "commonjs",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
