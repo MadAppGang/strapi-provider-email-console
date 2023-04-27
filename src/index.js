@@ -1,34 +1,17 @@
-import chalk from 'chalk';
-
-interface Settings {
-  defaultFrom: string;
-  defaultReplyTo: string;
+async function chalkModule() {
+  return (await import("chalk")).default;
 }
 
-interface SendOptions {
-  from?: string;
-  to: string;
-  cc: string;
-  bcc: string;
-  replyTo?: string;
-  subject: string;
-  text: string;
-  html: string;
-  [key: string]: unknown;
-}
 
-interface ProviderOptions {
-  logger?: any
-}
-
-export default {
+module.exports = {
   provider: 'srtapi-provider-email-console-colour',
   name: 'srtapi-provider-email-console-colour',
 
-  init(providerOptions: ProviderOptions, settings: Settings) {
+  init(providerOptions, settings) {
     return {
-      send : async function(options: SendOptions) {
-        return new Promise<void>((resolve) => {
+      send : async function(options) {
+        const chalk = await chalkModule();
+        return new Promise((resolve) => {
           const { from, to, cc, bcc, replyTo, subject, text, html } = options;
           const l = providerOptions.logger ?? console.log
           l(chalk.green('==================   Sending(pretending 😉) email...'));

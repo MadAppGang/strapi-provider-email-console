@@ -1,4 +1,5 @@
-import provider from '../src/index'
+// import provider from '../src/index'
+const provider = require("../src/index.js");
 import {expect, vi, test} from 'vitest';
 
 test('init is working fine', () => {
@@ -12,7 +13,7 @@ test('init is working fine', () => {
 
 test('check output', async () => {
   let output  = ''
-  const logger = function(s: string) { 
+  const logger = function(s) { 
     output = `${output}${s}\n`; 
   }
   const mockConsole = vi.fn(logger);

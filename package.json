@@ -6,17 +6,16 @@
     "strapi",
     "test"
   ],
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Strapi email provider to print emails to console",
   "repository": "git@github.com:MadAppGang/strapi-provider-email-console.git",
   "author": "Jack Rudenko <i@madappgang.com>",
   "license": "MIT",
   "private": false,
   "type": "commonjs",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./src/index.js",
   "files": [
-    "./dist"
+    "./src"
   ],
   "maintainers": [
     {
@@ -26,11 +25,6 @@
     }
   ],
   "scripts": {
-    "build": "yarn tsc",
-    "build:ts": "yarn  tsc",
-    "watch": "yarn tsc -w --preserveWatchOutput",
-    "clean": "yarn  rimraf ./dist",
-    "prepublishOnly": "yarn clean && yarn build",
     "lint": "yarn  eslint .",
     "test": "yarn vitest"
   },
@@ -39,11 +33,7 @@
     "npm": ">=6.0.0"
   },
   "devDependencies": {
-    "@types/node": "^18.16.1",
-    "@typescript-eslint/eslint-plugin": "^5.59.1",
-    "@typescript-eslint/parser": "^5.59.1",
     "eslint": "^8.39.0",
-    "typescript": "^5.0.4",
     "vite": "^4.3.3",
     "vitest": "^0.30.1"
   },
